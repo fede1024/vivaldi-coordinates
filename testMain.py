@@ -33,7 +33,7 @@ if __name__== "__main__":
 	# Modify them according to your need.
 	#num_neighbors = 10
 	#num_iterations = 200
-	num_neighbors = 3
+	num_neighbors = 10
 	num_iterations = 200
 
 	num_dimension = 2
@@ -53,11 +53,10 @@ if __name__== "__main__":
 	
 	v.run()
 	
-	print v.nodes
-	
 	predicted = v.getRTTGraph()
-	print predicted
 	rerr = v.getRelativeError(predicted)
+	
+	print sum(rerr) / float(len(rerr))
 
 	# Example (using pylab plotting function):
 	x,y = v.computeCDF(rerr)

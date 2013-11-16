@@ -31,16 +31,13 @@ class Vivaldi():
 					neighbor = self.nodes[neighbor_i]
 					rtt = self.graph.getRTT(node_i, neighbor_i)
 					dist = getNorm(getVet(node, neighbor))
-					u = getDirection(node, neighbor)
-					#print node_i, neighbor_i, rtt, dist, u
-					new_coords = map(lambda old, ud: old - self.conf.delta * (rtt - dist) * ud, node, u)
-					#print node, new_coords
-					print node_i, neighbor_i, rtt, dist
+					u = getDirection(neighbor, node)
+					new_coords = map(lambda old, ud: old + self.conf.delta * (rtt - dist) * ud, node, u)
 					node = new_coords
 				self.nodes[node_i] = node
 	
 	# get the predicted RTT graph following Vivaldi.
-	def getRTTGraph(self):
+	def oldgetRTTGraph(self):
 		al = {}
 		for i in xrange(self.conf.num_nodes):
 			a = self.nodes[i]
@@ -55,14 +52,30 @@ class Vivaldi():
 					al[i].append((j,rtt))
 		return al
 
+	def getRTTGraph(self):
+		graph = Graph(self.conf.getNumNodes());
+		for i, node1 in enumerate(self.nodes):
+			for j, node2 in enumerate(self.nodes):
+				rtt = getNorm(getVet(node1, node2))
+				graph.addVertex(i, j, rtt)
+		return graph
+
 	# get the position of a node 
 	def getPositions(self, node):
 		return self.nodes[node]
 	
 	# Relative error of the predicted graph wrt real RTT graph
 	def getRelativeError(self, predicted_graph):
-		#TODO
-		pass	
+		out = []
+		for i in xrange(self.conf.num_nodes):
+			for j in xrange(self.conf.num_nodes):
+				#print self.graph.getRTT(i,j), predicted_graph.getRTT(i, j), self.graph.getRTT(i,j) - predicted_graph.getRTT(i, j)
+				#out.append((self.graph.getRTT(i,j) - predicted_graph.getRTT(i, j))**2)
+				real = self.graph.getRTT(i,j)
+				approx = predicted_graph.getRTT(i, j)
+				out.append(0 if real == 0 else abs((real - approx) / real))
+				#print real, approx, 0 if real == 0 else abs((real - approx) / real)
+		return out
 	
 	# basic CDF computation
 	def computeCDF(self, input_):
