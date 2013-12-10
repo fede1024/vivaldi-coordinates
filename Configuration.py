@@ -18,7 +18,7 @@
 class Configuration():
 	def __init__(self, n, K, num_iterations, d=3, delta=0.25, ce=0.25, precision=1000):
 		self.num_nodes = n
-		self.num_neighbors = min(K, n)
+		self.num_neighbors = min(K, n-1)
 		self.num_interations = num_iterations
 		self.num_dimension = d
 		self.delta = delta

@@ -39,3 +39,11 @@ class Graph():
 	def getAdjacentList(self):
 		return self.adjacentList
 
+def buildgraph(rows):
+	g = Graph(len(rows))
+	for node in range(len(rows)):
+		arr = rows[node].strip().split(" ")
+		rtts = [float(x) for x in arr if len(x) > 0]
+		for neighbor in range(len(rtts)):
+			g.addVertex(node,neighbor,rtts[neighbor])
+	return g

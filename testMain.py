@@ -1,22 +1,17 @@
 #!/usr/bin/python
 
-from Graph import Graph
+from Graph import buildgraph
 from Configuration import Configuration
 from Vivaldi import Vivaldi
-
 import sys
-from pylab import *
 
-def buildgraph(rows):
-	g = Graph(len(rows))
-	for node in range(len(rows)):
-		arr = rows[node].strip().split(" ")
-		rtts = [float(x) for x in arr if len(x) > 0]
-		for neighbor in range(len(rtts)):
-			g.addVertex(node,neighbor,rtts[neighbor])
-	
-	return g
-	
+try:
+	import __pypy__
+except ImportError:
+	__pypy__ = None
+
+if __pypy__ == None:
+	from pylab import *
 	
 if __name__== "__main__":
 	if len(sys.argv) != 2:
@@ -34,9 +29,9 @@ if __name__== "__main__":
 	#num_neighbors = 10
 	#num_iterations = 200
 	num_neighbors = 10
-	num_iterations = 200
+	num_iterations = 1000
 
-	num_dimension = 2
+	num_dimension = 3
 	
 	# build a configuration and load the matrix into the graph
 	c = Configuration(num_nodes, num_neighbors, num_iterations, num_dimension)
@@ -50,15 +45,26 @@ if __name__== "__main__":
 	# run vivaldi: here, only the CDF of the relative error is retrieved. 
 	# Modify to retrieve what's requested.
 	v = Vivaldi(init_graph, c)
-	
+
 	v.run()
+	for node in v.nodes:
+		print "%5.1f %5.1f %5.1f"%(node[0], node[1], node[2])
 	
 	predicted = v.getRTTGraph()
 	rerr = v.getRelativeError(predicted)
 	
+# 	for i in xrange(c.num_nodes):
+# 		for j in xrange(i, c.num_nodes):
+# 			print "%3d %3d" % (init_graph.getRTT(i, j), predicted.getRTT(i, j))
+# 			d = init_graph.getRTT(i, j) - init_graph.getRTT(j, i) 
+# 			if d > 0:
+# 				print '%3d %3d  - %4d %4d %4d %5.1f' % (i, j,init_graph.getRTT(i, j), init_graph.getRTT(j, i),  d, predicted.getRTT(i, j))
+			
+	# media errore
 	print sum(rerr) / float(len(rerr))
 
-	# Example (using pylab plotting function):
-	x,y = v.computeCDF(rerr)
-	plot(x,y)
-	show()
+	if __pypy__ == None:
+		# Example (using pylab plotting function):
+		x,y = v.computeCDF(rerr)
+		plot(x,y)
+		show()
