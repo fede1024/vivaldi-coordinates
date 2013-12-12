@@ -16,34 +16,34 @@
 # 
 ###
 class Configuration():
-	def __init__(self, n, K, num_iterations, d=3, delta=0.25, ce=0.25, precision=1000):
-		self.num_nodes = n
-		self.num_neighbors = min(K, n-1)
-		self.num_interations = num_iterations
-		self.num_dimension = d
-		self.delta = delta
-		self.ce = ce
-		self.precision = precision
-	
-	# Getter methods
-	def getNumInterations(self):
-		return self.num_interations
-		
-	def getNumNodes(self):
-		return self.num_nodes
-		
-	def getNumNeighbors(self):
-		return self.num_neighbors
-	
-	def getNumDimension(self):
-		return self.num_dimension
-	
-	def getDelta(self):
-		return self.delta
-	
-	def getCe(self):
-		return self.ce
-		
-	def getPrecision(self):
-		return self.precision
-	
+    def __init__(self, n, K, num_iterations, d=3, delta=0.25, ce=0.25, precision=1000):
+        self.num_nodes = n
+        self.num_neighbors = min(K, n-1)
+        self.num_interations = num_iterations
+        self.num_dimension = d
+        self.delta = delta
+        self.ce = ce
+        self.precision = precision
+    
+    # Getter methods
+    def getNumInterations(self):
+        return self.num_interations
+        
+    def getNumNodes(self):
+        return self.num_nodes
+        
+    def getNumNeighbors(self):
+        return self.num_neighbors
+    
+    def getNumDimension(self):
+        return self.num_dimension
+    
+    def getDelta(self):
+        return self.delta
+    
+    def getCe(self):
+        return self.ce
+        
+    def getPrecision(self):
+        return self.precision
+    
