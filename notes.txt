@@ -75,6 +75,7 @@ Average: 19.18
 Average of violations: 95.87
 Minimum: 0.00
 
+SIMMETrY
 32 38 197 21 176.000000
 13 145 15 190 175.000000
 31 149 194 23 171.000000
@@ -82,3 +83,132 @@ Minimum: 0.00
 
 Average: 65.85
 544 over 40000 = 1.36 %
+
+
+===============================
+Num neighbors = 3
+Num iterations = 20
+Position variation:
+Maximum: 36.93
+Average: 12.91
+Minimum: 3.51
+Variance: 77.23
+
+Relative error:
+Maximum: 21.62
+Average: 5.37
+Minimum: 0.74
+Variance: 17.91
+===============================
+Num neighbors = 3
+Num iterations = 200
+Position variation:
+Maximum: 19.11
+Average: 0.85
+Minimum: 0.13
+Variance: 4.75
+
+Relative error:
+Maximum: 26.67
+Average: 5.51
+Minimum: 0.49
+Variance: 19.23
+===============================
+Num neighbors = 3
+Num iterations = 1000
+Position variation:
+Maximum: 38.78
+Average: 0.46
+Minimum: 0.07
+Variance: 2.90
+
+Relative error:
+Maximum: 34.60
+Average: 5.82
+Minimum: 0.43
+Variance: 23.03
+===============================
+Num neighbors = 10
+Num iterations = 20
+Position variation:
+Maximum: 56.33
+Average: 12.73
+Minimum: 2.32
+Variance: 290.54
+
+Relative error:
+Maximum: 16.12
+Average: 3.84
+Minimum: 0.41
+Variance: 8.05
+===============================
+Num neighbors = 10
+Num iterations = 200
+Position variation:
+Maximum: 23.83
+Average: 4.76
+Minimum: 0.91
+Variance: 9.51
+
+Relative error:
+Maximum: 18.63
+Average: 3.70
+Minimum: 0.48
+Variance: 6.97
+===============================
+Num neighbors = 10
+Num iterations = 1000
+Position variation:
+Maximum: 19.42
+Average: 2.08
+Minimum: 0.41
+Variance: 1.99
+
+Relative error:
+Maximum: 13.09
+Average: 3.75
+Minimum: 0.47
+Variance: 6.84
+===============================
+Num neighbors = 20
+Num iterations = 20
+Position variation:
+Maximum: 36.19
+Average: 12.06
+Minimum: 5.24
+Variance: 47.02
+
+Relative error:
+Maximum: 12.26
+Average: 3.30
+Minimum: 0.51
+Variance: 4.80
+===============================
+Num neighbors = 20
+Num iterations = 200
+Position variation:
+Maximum: 47.87
+Average: 6.99
+Minimum: 1.24
+Variance: 23.22
+
+Relative error:
+Maximum: 12.17
+Average: 3.30
+Minimum: 0.43
+Variance: 4.93
+===============================
+Num neighbors = 20
+Num iterations = 1000
+Position variation:
+Maximum: 85.79
+Average: 4.49
+Minimum: 0.89
+Variance: 13.92
+
+Relative error:
+Maximum: 11.74
+Average: 3.36
+Minimum: 0.42
+Variance: 4.88
+===============================

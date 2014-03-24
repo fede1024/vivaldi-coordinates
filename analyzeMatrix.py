@@ -4,7 +4,7 @@ from Vivaldi import computeCDF
 import math
 import sys
 
-#from pylab import figure, plot, suptitle, xlabel, ylabel, show, savefig
+from pylab import figure, plot, suptitle, xlabel, ylabel, show, savefig
 
 if __name__== "__main__":
     if len(sys.argv) != 2:
@@ -24,6 +24,7 @@ if __name__== "__main__":
     errors = []
     symm = []
     
+    # Check error in triangle inequality
     for x in xrange(size):
         sys.stdout.write("\r=> %d%%"%(float(x) / size * 100))
         sys.stdout.flush()
@@ -40,7 +41,9 @@ if __name__== "__main__":
                     
     print ""
     
+    # Take worst results frst
     symm = sorted(symm, key = lambda x: -x[2])
+    # Print worst paths
     for x in symm[0:4]:
         print "%d %d %d %d %f"%(x[0], x[1], graph.getRTT(x[0], x[1]), graph.getRTT(x[1], x[0]),  x[2])
     average = sum([x[2] for x in symm]) / len(symm)
@@ -68,6 +71,7 @@ if __name__== "__main__":
     print "Average of violations: %.2f"%average2
     print "Minimum: %.2f"%min(err)
 
+    # plot error distribution
     x,y = computeCDF(err)
 
     fig = figure()

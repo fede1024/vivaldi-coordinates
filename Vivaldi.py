@@ -13,9 +13,12 @@ class Vivaldi():
     def __init__(self, graph, conf):
         self.graph = graph
         self.conf = conf
+        # Initialize nodes coordinates
         self.nodes = [[random.uniform(0, 300) for _i in range(conf.num_dimension)] for _j in range(conf.num_nodes)]
         #self.nodes = [[0 for _i in range(conf.num_dimension)] for _j in range(conf.num_nodes)]
+        # Initialize nodes errors
         self.e = [200 for _i in range(conf.num_nodes)]
+        # initialize node neighbors
         self.neighbors = []
         for node_i in xrange(self.conf.num_nodes):
             p = []
@@ -27,6 +30,7 @@ class Vivaldi():
             self.neighbors.append(p)
         self.movements = []
     
+    # Version without considering error estimation
     def run_noerror(self):
         for _iteration in xrange(self.conf.num_interations):
             for node_i in xrange(self.conf.num_nodes):
@@ -47,18 +51,19 @@ class Vivaldi():
                     node = new_coords
                 self.nodes[node_i] = new_coords
     
+    # Version with error estimation
     def run(self):
-        ce = self.conf.ce
+        ce = self.conf.ce   # setting of cc and ce parameters
         cc = ce
         for iteration in xrange(self.conf.num_interations):
-            if iteration % 10 == 0:
+            if iteration % 10 == 0: # Print progress
                 stdout.write("=> %d%%\r"%(float(iteration) / self.conf.num_interations * 100))
                 stdout.flush()
             for node_i in xrange(self.conf.num_nodes):
-                mov = []
-                node = self.nodes[node_i]
+                mov = []        #    Node movements will be stored here
+                node = self.nodes[node_i]   # Current node
                 for neighbor_i in self.neighbors[node_i]:
-                    neighbor = self.nodes[neighbor_i]
+                    neighbor = self.nodes[neighbor_i]   # Neighbor
                     w = self.e[node_i] / (self.e[node_i] + self.e[neighbor_i])
                     rtt = self.graph.getRTT(node_i, neighbor_i)
                     dist = getNorm(getVet(node, neighbor))
@@ -69,15 +74,15 @@ class Vivaldi():
                     es = abs(dist-rtt)/rtt
                     self.e[node_i] = es*ce*w + self.e[node_i]*(1-ce*w)
                     delta = cc*w
-                    new_coords = map(lambda old, ud: old + delta * (rtt - dist) * ud, node, u)
+                    new_coords = map(lambda old, ud: old + delta * (rtt - dist) * ud, node, u) # Calculates new coordinates
                     #ndist = getNorm(getVet(new_coords, neighbor))
                     #if node_i == 0:
                     #    print "%3d %3d: [%3d %3d] => [%3d %3d]  %6.1f  %6.1f   %3d  %3d %3d  [%4.1f %4.1f]" % \
                     #    (node_i, neighbor_i, node[0],  node[1], new_coords[0], new_coords[1], rtt-dist, rtt-ndist, rtt, dist, ndist, u[0], u[1])
-                    node = new_coords
-                mov.append(getNorm(getVet(new_coords, self.nodes[node_i])))
-                self.nodes[node_i] = node
-            self.movements.append(sum(mov) / len(mov))
+                    node = new_coords   # Update coordinates based on one neighbor
+                mov.append(getNorm(getVet(new_coords, self.nodes[node_i]))) # Store node movement
+                self.nodes[node_i] = node   # Update node for this iteration
+            self.movements.append(sum(mov) / len(mov))  # Stores the average of nodes movements in this iteration
     
     # get the predicted RTT graph following Vivaldi.
     def getRTTGraph(self):
@@ -117,16 +122,20 @@ def computeCDF(input_):
 def getVet(a,b):
     return map(operator.sub, b, a)
 
+# Returns the norm of a n-dimension vector
 def getNorm(vPos):
     norm = 0
     for i in range(len(vPos)):
         norm += (vPos[i])**2
     return sqrt(norm)
 
+# Get the direction (vector) from point a to b
+# Length of vector: always 1 (if a != b)
 def getDirection(a, b):
     v = getVet(a, b)
     l = getNorm(v)
     return map(lambda x: 0 if l==0 else x/l, v)
     
+# Get random direction
 def getRandomDirection(dims):
     return [random.uniform(-1, 1) for _i in range(dims)]

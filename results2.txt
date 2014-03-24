@@ -1,0 +1,153 @@
+Running Vivaldi on a 200 size matrix
+Num neighbors = 3 
+Num iterations = 20 
+Position variation:
+Maximum: 25.71
+Average: 8.51
+Minimum: 5.27
+Variance: 25.49
+
+Relative error:
+Maximum: 17.22
+Average: 4.39
+Minimum: 0.61
+Variance: 10.79
+Values: 3.47 9.25 15.77
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 3 
+Num iterations = 200 
+Position variation:
+Maximum: 20.64
+Average: 0.87
+Minimum: 0.13
+Variance: 5.04
+
+Relative error:
+Maximum: 34.04
+Average: 5.78
+Minimum: 0.54
+Variance: 23.53
+Values: 4.21 12.76 22.49
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 3 
+Num iterations = 1000 
+Position variation:
+Maximum: 37.62
+Average: 0.69
+Minimum: 0.10
+Variance: 4.32
+
+Relative error:
+Maximum: 27.76
+Average: 5.70
+Minimum: 0.61
+Variance: 20.28
+Values: 4.55 12.08 24.07
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 10 
+Num iterations = 20 
+Position variation:
+Maximum: 40.44
+Average: 12.68
+Minimum: 1.68
+Variance: 160.75
+
+Relative error:
+Maximum: 12.40
+Average: 3.39
+Minimum: 0.59
+Variance: 5.38
+Values: 2.66 7.51 11.00
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 10 
+Num iterations = 200 
+Position variation:
+Maximum: 28.90
+Average: 2.99
+Minimum: 0.58
+Variance: 14.00
+
+Relative error:
+Maximum: 14.67
+Average: 3.81
+Minimum: 0.48
+Variance: 7.79
+Values: 2.81 7.56 13.76
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 10 
+Num iterations = 1000 
+Position variation:
+Maximum: 74.76
+Average: 3.56
+Minimum: 0.53
+Variance: 12.71
+
+Relative error:
+Maximum: 15.50
+Average: 4.05
+Minimum: 0.43
+Variance: 8.71
+Values: 3.04 8.89 13.59
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 20 
+Num iterations = 20 
+Position variation:
+Maximum: 89.77
+Average: 13.04
+Minimum: 2.14
+Variance: 401.30
+
+Relative error:
+Maximum: 11.40
+Average: 3.44
+Minimum: 0.53
+Variance: 5.14
+Values: 2.81 6.82 10.43
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 20 
+Num iterations = 200 
+Position variation:
+Maximum: 63.84
+Average: 5.68
+Minimum: 1.79
+Variance: 30.88
+
+Relative error:
+Maximum: 19.95
+Average: 3.33
+Minimum: 0.56
+Variance: 6.19
+Values: 2.64 6.53 13.42
+
+
+Running Vivaldi on a 200 size matrix
+Num neighbors = 20 
+Num iterations = 1000 
+Position variation:
+Maximum: 46.86
+Average: 4.94
+Minimum: 0.76
+Variance: 7.44
+
+Relative error:
+Maximum: 13.33
+Average: 3.26
+Minimum: 0.54
+Variance: 4.73
+Values: 2.67 6.48 9.67
+
+
